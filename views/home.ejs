@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="/styles/styleHome.css">
+  </head>
+  <body>
+    <h1>Home</h1>
+    <% if(error) { %>
+      <p> <%= error %> </p>
+    <% } %>
+
+      <% if(isMember != null && isMember == 2) { %>
+        <% if(messages.length != 0) { %>
+          <ul>
+              <% messages.forEach((m) => { %>
+                  <li>
+                      Title: <%= m.title %>
+                      Text: <%= m.text %>
+                      Username: <%= m.username %>
+                      Date: <% 
+                          const creationDate = new Date(m.creation); 
+                          const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false };
+                          const formattedDate = creationDate.toLocaleDateString('es-AR', options);
+                      %>
+                      <%= formattedDate %>
+                      <form method="POST" action='/deleteMessage/<%= m.id %>'>
+                        <button type="submit">Delete</button>
+                      </form> 
+                  </li>
+              <% }); %>
+          </ul>
+        <% } %>
+    <% } else if(isMember != null && isMember == 1) { %>
+          <% if(messages.length != 0) { %>
+            <ul>
+                <% messages.forEach((m) => { %>
+                    <li>
+                        Title <%= m.title %>
+                        Text <%= m.text %>
+                        Username: <%= m.username %>
+                        Date: <% 
+                            const creationDate = new Date(m.creation); 
+                            const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false };
+                            const formattedDate = creationDate.toLocaleDateString('es-AR', options);
+                        %>
+                        <%= formattedDate %>
+                    </li>
+                <% }); %>
+            </ul>
+          <% } %>
+    <% } else { %>
+      <% if(messages.length != 0) { %>
+        <ul>
+            <% messages.forEach((m) => { %>
+                <li>
+                    Title: <%= m.title %>
+                    Text: <%= m.text %>
+                </li>
+            <% }); %>
+        </ul>
+      <% } %>
+    <% } %>
+    <div class="buttons-container">
+        <a href="/register">
+          <span>Register</span>
+        </a>
+        <a href="/login">
+          <span>Login</span>
+        </a>
+        <a href="/createMessage">
+          <span>Create message</span>
+        </a>
+        <form method="POST" action="/logout">
+          <button type="submit">Logout</button>
+        </form>
+        <a href="/admin">
+          <span>Make you admin</span>
+        </a>
+        <a href="/joinclub">
+          <span>Make you member</span>
+        </a> 
+    </div>
+  </body>
+</html>
+
+
+

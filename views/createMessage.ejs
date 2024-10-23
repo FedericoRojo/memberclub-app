@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>Create Message</title>
+    <link rel="stylesheet" type="text/css" href="/styles/styleFormPage.css"> 
+  </head>
+  <body>
+    <% if(typeof error !== 'undefined' && error !== null) { %>
+      <p> <%= error %> </p>
+    <% } %>
+    <h1>Create Message</h1>
+    <div class="form-container">
+        <form method="POST" action="/createMessage">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title">
+            <label for="text">Text:</label>
+            <input type="text" id="text" name="text">
+            <button type="submit">Submit</button>
+        </form> 
+    </div>
+    <a href="/">
+      <span>Home</span>
+    </a>
+  </body>
+</html>
+
+
+

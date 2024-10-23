@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Get admin</title>
+    <link rel="stylesheet" type="text/css" href="/styles/styleFormPage.css"> 
+  </head>
+  <body>
+    
+    <h1>Get admin</h1>
+
+    <% if(error) { %>
+      <p> <%= error %> </p>
+    <% } %>
+
+    <form method="POST" action="/admin">
+        <label for="passkey">Enter pass key:</label>
+        <input type="text" id="passkey" name="passkey">
+        <button type="submit">Submit</button>
+    </form> 
+    <a href="/">
+      <span>Home</span>
+    </a>
+  </body>
+</html>
+
+
+
